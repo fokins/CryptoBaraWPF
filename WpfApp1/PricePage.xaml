@@ -1,0 +1,162 @@
+﻿<Page x:Class="WpfApp1.PricePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      Height="700" Width="900"
+      Title="PricePage">
+
+    <Grid Background="#ffdadada">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="1" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/LINK.png" Height="60"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="LINK" FontSize="30" FontFamily="Microsoft Sans Serif"/>
+                <Image Grid.Column="2" VerticalAlignment="Center" Source="/up.png" Width="42" />
+                <TextBlock x:Name="LinkBestPriceBlock" Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+                <Image Grid.Column="4" VerticalAlignment="Center" Source="/down.png" />
+                <TextBlock x:Name="LinkWorstPriceBlock" Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="2" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/DOT.png" Height="60"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="DOT" FontSize="30" FontFamily="Microsoft Sans Serif"/>
+                <Image Grid.Column="2" VerticalAlignment="Center" Source="/up.png" Width="42" />
+                <TextBlock x:Name="DotBestPriceBlock" Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+                <Image Grid.Column="4" VerticalAlignment="Center" Source="/down.png" />
+                <TextBlock x:Name="DotWorstPriceBlock" Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="3" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/ADA.png" Height="60"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="ADA" FontSize="30" FontFamily="Microsoft Sans Serif"/>
+                <Image Grid.Column="2" VerticalAlignment="Center" Source="/up.png" Width="42"/>
+                <TextBlock x:Name="AdaBestPriceBlock" Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+                <Image Grid.Column="4" VerticalAlignment="Center" Source="/down.png" />
+                <TextBlock x:Name="AdaWorstPriceBlock" Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="4" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/XTZ.png" Height="60"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="XTZ" FontSize="30" FontFamily="Microsoft Sans Serif"/>
+                <Image Grid.Column="2" VerticalAlignment="Center" Source="/up.png" Width="42"/>
+                <TextBlock x:Name="XtzBestPriceBlock" Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+                <Image Grid.Column="4" VerticalAlignment="Center" Source="/down.png" />
+                <TextBlock x:Name="XtzWorstPriceBlock" Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="5" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.15*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Source="/TRX.png" Height="60"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="TRX" FontSize="30" FontFamily="Microsoft Sans Serif"/>
+                <Image Grid.Column="2" VerticalAlignment="Center" Source="/up.png" Width="42"/>
+                <TextBlock x:Name="TrxBestPriceBlock" Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+                <Image Grid.Column="4" VerticalAlignment="Center" Source="/down.png"/>
+                <TextBlock x:Name="TrxWorstPriceBlock" Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30"/>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="6" MinWidth="500" MaxWidth="850" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+            <TextBlock x:Name="BalanceBlock" VerticalAlignment="Center" Padding="10" FontSize="30" Text="Demo Balance:"/>
+        </Border>
+        <Border Grid.Row="7" MinWidth="500" MaxWidth="850" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="30" Width="70" HorizontalAlignment ="Left" Margin="10"/>
+                <Button Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="30" Width="70" HorizontalAlignment="Left" Margin="10"/>
+            </Grid>
+        </Border>
+
+
+    </Grid>
+</Page>
