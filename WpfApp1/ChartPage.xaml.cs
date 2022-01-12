@@ -74,8 +74,6 @@ namespace WpfApp1
 
         public List<ChartValues<OhlcPoint>> ChartsVal = new List<ChartValues<OhlcPoint>>();
 
-        //public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX" };
-
         public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX" };
 
         public List<bool> isChecked = new List<bool>() { false, false, false, false, false };

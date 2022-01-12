@@ -191,29 +191,32 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LINK.png" />
+    <Resource Include="Images\Coins\LINK.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="up.png" />
+    <Resource Include="Images\Icons\down.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="down.png" />
+    <Resource Include="Images\Coins\ADA.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ADA.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XTZ.png" />
+    <Resource Include="Images\Coins\XTZ.png" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.7\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="DOT.png" />
+    <Resource Include="Images\Coins\DOT.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TRX.png" />
+    <Resource Include="Images\Coins\TRX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LINK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

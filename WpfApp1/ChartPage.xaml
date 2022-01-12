@@ -6,14 +6,14 @@
       xmlns:local="clr-namespace:WpfApp1"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="700" Width="900"
+      Height="700" Width="900"
       Title="ChartPage">
 
     <Grid Background="#ffdadada">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="470"/>
+            <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" MinWidth="500" MaxWidth="850" Margin="10" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
@@ -34,7 +34,7 @@
                 <Button Grid.Column="2" x:Name="LoadButton" Click="LoadButton_Click" Content="Load" Height="30" Width="70" HorizontalAlignment="Right" Margin="10"/>
             </Grid>
         </Border>
-
+        
         <Border Grid.Row="1" MinWidth="500" MaxWidth="850" MinHeight="450" MaxHeight="450" Margin="10" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
 
             <Border.Effect>
@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="800" Height="400" Series="{Binding SeriesCollection}" LegendLocation="Right" DataTooltip="{x:Null}" Hoverable="False" DisableAnimations="True"/>
+                <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="800" Height="400" Series="{Binding Series}" LegendLocation="None" Margin="10"  DataTooltip="{x:Null}" Hoverable="False" DisableAnimations="True"/>
                 <StackPanel Grid.Column="1" Margin="10">
                     <CheckBox x:Name="BtcCheckBox" IsThreeState="False" IsChecked="False" Height="30" Content="LINK" Checked="LinkBoxChecked" Unchecked="LinkBoxUnchecked"/>
                     <CheckBox x:Name="EthCheckBox" IsThreeState="False" IsChecked="False" Height="30" Content="DOT" Checked="DotBoxChecked" Unchecked="DotBoxUnchecked"/>
@@ -56,11 +56,11 @@
                     <CheckBox x:Name="XtzCheckBox" IsThreeState="False" IsChecked="False" Height="30" Content="XTZ" Checked="XtzBoxChecked" Unchecked="XtzBoxUnchecked"/>
                     <CheckBox x:Name="TrxCheckBox" IsThreeState="False" IsChecked="False" Height="30" Content="TRX" Checked="TrxBoxChecked" Unchecked="TrxBoxUnchecked"/>
                 </StackPanel>
-                
+
             </Grid>
         </Border>
-
-        <Border Grid.Row="2" MinWidth="500" Margin="10" MaxWidth="850" Background="White" VerticalAlignment="Top"  Padding="5" CornerRadius="10">
+        
+        <Border Grid.Row="2" MinWidth="500" MaxWidth="850" Background="White" VerticalAlignment="Top"  Padding="5" CornerRadius="10">
 
             <Border.Effect>
                 <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
@@ -68,13 +68,13 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="650"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="30" Width="70" HorizontalAlignment ="Left" Margin="10"/>
-                <Button Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="30" Width="70" HorizontalAlignment="Left" Margin="10"/>
+                <Button Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="25" Width="70" HorizontalAlignment ="Left" Margin="10"/>
+                <Button Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="25" Width="70" HorizontalAlignment="Left" Margin="10"/>
             </Grid>
         </Border>
 
