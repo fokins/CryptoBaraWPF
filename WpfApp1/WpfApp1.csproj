@@ -213,9 +213,6 @@
     <Resource Include="Images\Coins\TRX.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="LINK.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

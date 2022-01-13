@@ -72,11 +72,14 @@ namespace WpfApp1
             public bool HasWarning { get; set; }
         }
 
-        public List<ChartValues<OhlcPoint>> ChartsVal = new List<ChartValues<OhlcPoint>>();
+        public List<ChartValues<OhlcPoint>> OhlcChartsVal = new List<ChartValues<OhlcPoint>>();
+        public List<ChartValues<ObservablePoint>> DefChartsVal = new List<ChartValues<ObservablePoint>>();
 
         public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX" };
 
         public List<bool> isChecked = new List<bool>() { false, false, false, false, false };
+
+        public int ChartType = 0;
 
         public WebClient BaseCLient = new WebClient();
 
@@ -88,14 +91,28 @@ namespace WpfApp1
 
             SeriesCollection Series = new SeriesCollection();
 
-            foreach(var item in ChartsVal)
+            if (ChartType == 0)
             {
-                if (isChecked[count])
+                foreach (var item in OhlcChartsVal)
                 {
-                    Series.Add(new OhlcSeries { Values = item, Title = "", Stroke = Brushes.Transparent, Fill = Brushes.Transparent });
-                }
+                    if (isChecked[count])
+                    {
+                        Series.Add(new OhlcSeries { Values = item, Title = "", Stroke = Brushes.Transparent, Fill = Brushes.Transparent });
+                    }
 
-                count++;
+                    count++;
+                }
+            }else if(ChartType == 1)
+            {
+                foreach(var item in DefChartsVal)
+                {
+                    if (isChecked[count])
+                    {
+                        Series.Add(new LineSeries { Values = item, Title = "", Stroke = Brushes.Blue, Fill = Brushes.Transparent });
+                    }
+                    
+                    count++;
+                }
             }
 
             Chart.Series = Series;
@@ -132,11 +149,28 @@ namespace WpfApp1
 
                 ticker = JsonSerializer.Deserialize<Root>(JsonString);
 
-                ChartsVal.Add( new ChartValues<OhlcPoint> { new OhlcPoint(0, 0, 0, 0) });
+                //OhlcChartsVal.Add( new ChartValues<OhlcPoint> { new OhlcPoint(0, 0, 0, 0) });
+                //DefChartsVal.Add(new ChartValues<ObservablePoint> { new ObservablePoint(0, 0) });
 
                 foreach (var item in ticker.Data)
                 {
-                    ChartsVal[count].Add(new OhlcPoint(item.open, item.high, item.low, item.close));
+                    if (OhlcChartsVal.Count != count)
+                    {
+                        OhlcChartsVal[count].Add(new OhlcPoint(item.open, item.high, item.low, item.close));
+                    }
+                    else
+                    {
+                        OhlcChartsVal.Add(new ChartValues<OhlcPoint> { new OhlcPoint(item.open, item.high, item.low, item.close) });
+                    }
+
+                    if (DefChartsVal.Count != count)
+                    {
+                        DefChartsVal[count].Add(new ObservablePoint(item.time, item.high));
+                    }
+                    else
+                    {
+                        DefChartsVal.Add(new ChartValues<ObservablePoint> { new ObservablePoint(item.time, item.high) });
+                    }
                 }
 
                 count++;
@@ -210,6 +244,20 @@ namespace WpfApp1
         private void TrxBoxUnchecked(object sender, RoutedEventArgs e)
         {
             isChecked[4] = false;
+
+            UpdateCharts();
+        }
+
+        private void DefChecked(object sender, RoutedEventArgs e)
+        {
+            ChartType = 1;
+
+            UpdateCharts();
+        }
+
+        private void OhclChecked(object sender, RoutedEventArgs e)
+        {
+            ChartType = 0;
 
             UpdateCharts();
         }
