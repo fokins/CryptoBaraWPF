@@ -8,5 +8,30 @@
         mc:Ignorable="d"
         Height="700" Width="900" ResizeMode="NoResize">
 
-    <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
+    <Grid Background="#ffdadada">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="570"/>
+            <RowDefinition Height="130"/>
+        </Grid.RowDefinitions>
+
+        <Frame Grid.Row="0" Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
+        
+        <Border Grid.Row="1" MinWidth="500" MaxWidth="850" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="650"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="25" Width="70" HorizontalAlignment ="Left" Margin="10"/>
+                <Button Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="25" Width="70" HorizontalAlignment="Left" Margin="10"/>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>
