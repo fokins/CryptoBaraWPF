@@ -99,7 +99,8 @@ namespace WpfApp1.ViewModels
         {
             int count = 0;
 
-            Series = new SeriesCollection();
+            SeriesCollection series = new SeriesCollection();
+
 
             if (_isOhlcChartType)
             {
@@ -107,7 +108,7 @@ namespace WpfApp1.ViewModels
                 {
                     if (Checked[count])
                     {
-                        Series.Add(new OhlcSeries { Values = item, Title = "", Stroke = Brushes.Transparent, Fill = Brushes.Transparent });
+                        series.Add(new OhlcSeries { Values = item, Title = "", Stroke = Brushes.Transparent, Fill = Brushes.Transparent });
                     }
 
                     count++;
@@ -119,12 +120,14 @@ namespace WpfApp1.ViewModels
                 {
                     if (Checked[count])
                     {
-                        Series.Add(new LineSeries { Values = item, Title = "", Stroke = ChartColors[count], Fill = Brushes.Transparent });
+                        series.Add(new LineSeries { Values = item, Title = "", Stroke = ChartColors[count], Fill = Brushes.Transparent });
                     }
 
                     count++;
                 }
             }
+
+            Series = series;
         }
 
         public ChartViewModel()

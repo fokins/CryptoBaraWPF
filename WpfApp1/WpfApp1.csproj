@@ -141,7 +141,7 @@
     <Compile Include="ViewModels\ChartViewModel.cs" />
     <Compile Include="ViewModels\PriceViewModel.cs" />
     <Compile Include="ClassesCollection\RelayCommand.cs" />
-    <Page Include="ChartPage.xaml">
+    <Page Include="Pages\ChartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,20 +153,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ChartPage.xaml.cs">
+    <Compile Include="Pages\ChartPage.xaml.cs">
       <DependentUpon>ChartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PricePage.xaml">
+    <Page Include="Pages\PricePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PricePage.xaml.cs">
+    <Compile Include="Pages\PricePage.xaml.cs">
       <DependentUpon>PricePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
