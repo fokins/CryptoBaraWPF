@@ -28,14 +28,5 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-        private void PriceButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ChartButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new ChartPage());
-        }
     }
 }

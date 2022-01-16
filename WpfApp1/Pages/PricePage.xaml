@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <GroupBox Grid.Row="0" Header="Coin Prices" Margin="0, 10, 0, 0" FontSize="20" FontFamily="Segoe UI Light" >
-            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer VerticalScrollBarVisibility="Visible">
                 <StackPanel>
                     <Border Width="850" Height="75" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
                         <Border.Effect>
@@ -130,6 +130,75 @@
                             <TextBlock Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding BidPrices[4]}"/>
                             <Image Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/down.png" Width="20"/>
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[4]}"/>
+                        </Grid>
+                    </Border>
+                    <Border Width="850" Height="75" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="/Images/Coins/CRO.png" Height="60"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="CRO" FontSize="30" FontFamily="Cascadia Mono SemiLight"/>
+                            <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/up.png" Width="20"/>
+                            <TextBlock Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding BidPrices[5]}"/>
+                            <Image Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/down.png" Width="20"/>
+                            <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[5]}"/>
+                        </Grid>
+                    </Border>
+                    <Border Width="850" Height="75" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="/Images/Coins/NEAR.png" Height="60"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="NEAR" FontSize="30" FontFamily="Cascadia Mono SemiLight"/>
+                            <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/up.png" Width="20"/>
+                            <TextBlock Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding BidPrices[6]}"/>
+                            <Image Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/down.png" Width="20"/>
+                            <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[6]}"/>
+                        </Grid>
+                    </Border>
+                    <Border Width="850" Height="75" Margin="5" Background="White" VerticalAlignment="Top" Padding="5" CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.15*"/>
+                                <ColumnDefinition Width="0.1*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                                <ColumnDefinition Width="0.05*"/>
+                                <ColumnDefinition Width="0.3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.Column="0" Source="/Images/Coins/ATOM.png" Height="60"/>
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Padding="10" Text="FTM" FontSize="30" FontFamily="Cascadia Mono SemiLight"/>
+                            <Image Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/up.png" Width="20"/>
+                            <TextBlock Grid.Column="3" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding BidPrices[7]}"/>
+                            <Image Grid.Column="4" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Images/Icons/down.png" Width="20"/>
+                            <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[7]}"/>
                         </Grid>
                     </Border>
                 </StackPanel>

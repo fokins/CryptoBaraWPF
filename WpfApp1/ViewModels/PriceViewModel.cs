@@ -31,8 +31,8 @@ namespace WpfApp1.ViewModels
         private List<Ticker> BestPrices = new List<Ticker>();
         private List<Ticker> WorstPrices = new List<Ticker>();
 
-        private ObservableCollection<string> _bidPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???" };
-        private ObservableCollection<string> _askPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???" };
+        private ObservableCollection<string> _bidPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???", "???", "???", "???" };
+        private ObservableCollection<string> _askPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???", "???", "???", "???" };
 
         public ObservableCollection<string> BidPrices
         {
@@ -62,9 +62,9 @@ namespace WpfApp1.ViewModels
 
         public PriceViewModel()
         {
-            List<string> GateIoCoinNames = new List<string>() { "link_usdt", "dot_usdt", "ada_usdt", "xtz_usdt", "trx_usdt" };
-            List<string> KrakenCoinNames = new List<string>() { "LINKUSD", "DOTUSD", "ADAUSD", "XTZUSD", "TRXUSD" };
-            List<string> KucoinCoinNames = new List<string>() { "LINK-USDT", "DOT-USDT", "ADA-USDT", "XTZ-USDT", "TRX-USDT" };
+            List<string> GateIoCoinNames = new List<string>() { "link_usdt", "dot_usdt", "ada_usdt", "xtz_usdt", "trx_usdt", "cro_usdt", "near-usdt", "atom-usdt" };
+            List<string> KrakenCoinNames = new List<string>() { "LINKUSD", "DOTUSD", "ADAUSD", "XTZUSD", "TRXUSD", "CROUSD", "NEARUSD", "ATOMUSD" };
+            List<string> KucoinCoinNames = new List<string>() { "LINK-USDT", "DOT-USDT", "ADA-USDT", "XTZ-USDT", "TRX-USDT", "CRO-USDT", "NEAR-USDT", "ATOM-USDT" };
 
             List<string> ExchangeNames = new List<string>() { ExchangeName.GateIo, ExchangeName.Kraken, ExchangeName.Kucoin };
 

@@ -31,9 +31,9 @@ namespace WpfApp1.ViewModels
         public List<ChartValues<OhlcPoint>> OhlcChartsVal = new List<ChartValues<OhlcPoint>>();
         public List<ChartValues<ObservablePoint>> DefChartsVal = new List<ChartValues<ObservablePoint>>();
 
-        public List<SolidColorBrush> ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.Yellow, Brushes.Orange };
+        public List<SolidColorBrush> ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.Yellow, Brushes.Orange, Brushes.Aquamarine, Brushes.BlueViolet, Brushes.Coral };
 
-        public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX" };
+        public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM" };
 
         private bool _isOhlcChartType = true;
 
@@ -41,7 +41,7 @@ namespace WpfApp1.ViewModels
 
         private SeriesCollection _Series = new SeriesCollection();
 
-        private ObservableCollection<bool> _Checked = new ObservableCollection<bool>() { false, false, false, false, false };
+        private ObservableCollection<bool> _Checked = new ObservableCollection<bool>() { false, false, false, false, false, false, false, false };
 
         private RelayCommand addCommand;
         public RelayCommand AddCommand
