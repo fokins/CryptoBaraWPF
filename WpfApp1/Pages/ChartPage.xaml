@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
       mc:Ignorable="d" 
       Height="700" Width="900"
       Title="ChartPage">
@@ -39,6 +40,8 @@
                 </Border.Effect>
 
                 <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="700" Height="420" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True"/>
+                <!--<oxy:PlotView Model="{Binding ChartModel}"/>-->
+
             </Border>
             <StackPanel Grid.Column="1">
                 <Border Height="275" Width="75" Margin="10" HorizontalAlignment="Left" Background="White" CornerRadius="10">
