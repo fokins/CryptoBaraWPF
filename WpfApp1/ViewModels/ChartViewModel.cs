@@ -133,7 +133,7 @@ namespace WpfApp1.ViewModels
 
         public ChartViewModel()
         {
-            /*const string BaseURL = "https://min-api.cryptocompare.com/data/histoday?aggregate=1&e=CCCAGG&extraParams=CryptoCompare&fsym=";
+            const string BaseURL = "https://min-api.cryptocompare.com/data/histoday?aggregate=1&e=CCCAGG&extraParams=CryptoCompare&fsym=";
             const string CurrencyURL = "&limit=365&tryConversion=false&tsym=USD";
 
             int count = 0;
@@ -169,22 +169,7 @@ namespace WpfApp1.ViewModels
                 }
 
                 count++;
-            }*/
-
-            this.Title = "Example 2";
-            this.Points = new List<DataPoint>
-                              {
-                                  new DataPoint(0, 4),
-                                  new DataPoint(10, 13),
-                                  new DataPoint(20, 15),
-                                  new DataPoint(30, 16),
-                                  new DataPoint(40, 12),
-                                  new DataPoint(50, 12)
-                              };
+            }
         }
-
-        public string Title { get; private set; }
-
-        public IList<DataPoint> Points { get; private set; }
     }
 }

@@ -9,9 +9,8 @@
       Title="PricePage">
 
     <Page.Resources>
-        <Style x:Key="PriceBorder">
-            <Setter Property="Border.Width" Value="850"/>
-            <Setter Property="Border.Height" Value="75"/>
+        <!--#region RoundedBorder-->
+        <Style x:Key="RoundedBorder">
             <Setter Property="Border.Background" Value="White"/>
             <Setter Property="Border.VerticalAlignment" Value="Top"/>
             <Setter Property="Border.Padding" Value="5"/>
@@ -24,23 +23,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+        <!--#endregion-->
     </Page.Resources>
     
     <Grid Background="#ffdadada">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="550"/>
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
 
         <GroupBox Grid.Row="0" Header="Coin Prices" Margin="0, 10, 0, 0" FontSize="20" FontFamily="Segoe UI Light">
-            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer  VerticalScrollBarVisibility="Visible" Margin="0, 0, 10, 0">
                 <StackPanel>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -60,10 +56,7 @@
                             <TextBlock  Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[0]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -83,10 +76,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[1]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -106,10 +96,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[2]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -129,10 +116,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[3]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -152,10 +136,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[4]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -175,10 +156,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[5]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -198,10 +176,7 @@
                             <TextBlock Grid.Column="5" VerticalAlignment="Center" Padding="10" FontSize="30" FontFamily="Segoe UI Light" Text="{Binding AskPrices[6]}"/>
                         </Grid>
                     </Border>
-                    <Border Style="{StaticResource PriceBorder}">
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" Color="LightGray" ShadowDepth="0"/>
-                        </Border.Effect>
+                    <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
                         <Grid>
                             <Grid.ColumnDefinitions>
