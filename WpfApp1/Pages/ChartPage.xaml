@@ -54,22 +54,22 @@
 
                     <StackPanel Margin="10">
                         <TextBlock Text="Coins:" FontSize="15" FontFamily="Segoe UI" Margin="0, 0, 0, 5"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="LINK" IsChecked="{Binding Checked[0], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="DOT" IsChecked="{Binding Checked[1], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="ADA" IsChecked="{Binding Checked[2], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="XTZ" IsChecked="{Binding Checked[3], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="TRX" IsChecked="{Binding Checked[4], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="CRO" IsChecked="{Binding Checked[5], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="NEAR" IsChecked="{Binding Checked[6], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
-                        <CheckBox IsThreeState="False" Height="30" Content="ATOM" IsChecked="{Binding Checked[7], Mode=TwoWay}" Command="{Binding AddCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="LINK" IsChecked="{Binding Checked[0], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="DOT" IsChecked="{Binding Checked[1], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="ADA" IsChecked="{Binding Checked[2], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="XTZ" IsChecked="{Binding Checked[3], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="TRX" IsChecked="{Binding Checked[4], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="CRO" IsChecked="{Binding Checked[5], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="NEAR" IsChecked="{Binding Checked[6], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
+                        <CheckBox IsThreeState="False" Height="30" Content="ATOM" IsChecked="{Binding Checked[7], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
                     </StackPanel>
                 </Border>
 
                 <Border Height="80" Width="75" Margin="10" HorizontalAlignment="Left" Style="{StaticResource RoundedBorder}">
                     <StackPanel>
                         <TextBlock Text="Style:" FontFamily="Segoe UI" FontSize="15" Margin="10, 10, 0, 0"/>
-                        <RadioButton GroupName="ChartStyle" Content="OHLC" ToolTip="Open High Low Close" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" IsChecked="{Binding isOhlcChartType, Mode=TwoWay}" Command="{Binding AddCommand}"/>
-                        <RadioButton GroupName="ChartStyle" Content="DEF" ToolTip="Default Lines" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" Command="{Binding AddCommand}"/>
+                        <RadioButton GroupName="ChartStyle" Content="OHLC" ToolTip="Open High Low Close" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" IsChecked="{Binding isOhlcChartType, Mode=TwoWay}" Command="{Binding UpdateCommand}"/>
+                        <RadioButton GroupName="ChartStyle" Content="DEF" ToolTip="Default Lines" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" Command="{Binding UpdateCommand}"/>
                     </StackPanel>
                 </Border>
             </StackPanel>

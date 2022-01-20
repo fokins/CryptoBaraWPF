@@ -44,13 +44,13 @@ namespace WpfApp1.ViewModels
 
         private ObservableCollection<bool> _Checked = new ObservableCollection<bool>() { false, false, false, false, false, false, false, false };
 
-        private RelayCommand addCommand;
-        public RelayCommand AddCommand
+        private RelayCommand _UpdateCommand;
+        public RelayCommand UpdateCommand
         {
             get
             {
-                return addCommand ??
-                    (addCommand = new RelayCommand(obj =>
+                return _UpdateCommand ??
+                    (_UpdateCommand = new RelayCommand(obj =>
                     {
                         UpdateSeries();
                     }));
@@ -121,7 +121,7 @@ namespace WpfApp1.ViewModels
                 {
                     if (Checked[count])
                     {
-                        series.Add(new LineSeries { Values = item, Title = "", Stroke = ChartColors[count], Fill = Brushes.Transparent });
+                        series.Add(new LineSeries { Values = item, Title = "", Stroke = ChartColors[count], Fill = Brushes.Transparent, PointGeometry = null });
                     }
 
                     count++;

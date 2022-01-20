@@ -34,7 +34,7 @@
         </Grid.RowDefinitions>
 
         <GroupBox Grid.Row="0" Header="Coin Prices" Margin="0, 10, 0, 0" FontSize="20" FontFamily="Segoe UI Light">
-            <ScrollViewer  VerticalScrollBarVisibility="Visible" Margin="0, 0, 10, 0">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="0, 0, 10, 0">
                 <StackPanel>
                     <Border Style="{StaticResource RoundedBorder}" Width="850" Height="75">
 
