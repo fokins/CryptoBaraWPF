@@ -18,7 +18,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="White"/>
         <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
@@ -92,16 +92,10 @@
 
         <Border Grid.Row="1" MinWidth="500" MaxWidth="850" Style="{StaticResource RoundedBorder}">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="120"/>
-                    <ColumnDefinition Width="650"/>
-                </Grid.ColumnDefinitions>
-
-                <Button Style="{DynamicResource RoundedButton}" Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="30" Width="80" HorizontalAlignment ="Left" Margin="20, 0, 0, 0" FontFamily="Segoe UI" FontSize="15"/>
-                <Button Style="{DynamicResource RoundedButton}" Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="30" Width="80" HorizontalAlignment="Left" Margin="10" FontFamily="Segoe UI" FontSize="15"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{DynamicResource RoundedButton}" Grid.Column="0" x:Name="PriceButton" Click="PriceButton_Click" Content="Prices" Height="40" Width="80" HorizontalAlignment ="Left" Margin="10, 10, 0, 10" FontFamily="Segoe UI" FontSize="17"/>
+                <Button Style="{DynamicResource RoundedButton}" Grid.Column="1" x:Name="ChartButton" Click="ChartButton_Click" Content="Charts" Height="40" Width="80" HorizontalAlignment="Left" Margin="20, 0, 0, 0" FontFamily="Segoe UI" FontSize="17"/>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

@@ -12,17 +12,8 @@ using WpfApp1.Classes;
 
 namespace WpfApp1.ViewModels
 {
-    class PriceViewModel : INotifyPropertyChanged
+    class PriceViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
         public static DateTime TruncateToMilliSecond(DateTime original)
         {
             return new DateTime(original.Year, original.Month, original.Day, original.Hour, original.Minute, original.Second, original.Millisecond - original.Millisecond % 500);
