@@ -107,7 +107,7 @@
 
             <Border Grid.Column="0" Height="470" Width="755" HorizontalAlignment="Right" Margin="10" Style="{StaticResource RoundedBorder}">
 
-                <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="700" Height="440" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True"/>
+                <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="720" Height="440" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True"/>
 
             </Border>
             <StackPanel Grid.Column="1">
