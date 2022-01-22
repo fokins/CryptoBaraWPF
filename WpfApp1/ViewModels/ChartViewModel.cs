@@ -20,16 +20,16 @@ namespace WpfApp1.ViewModels
 {
     class ChartViewModel : BaseViewModel
     {
-        public List<ChartValues<OhlcPoint>> OhlcChartsVal = new List<ChartValues<OhlcPoint>>();
-        public List<ChartValues<ObservablePoint>> DefChartsVal = new List<ChartValues<ObservablePoint>>();
+        private List<ChartValues<OhlcPoint>> OhlcChartsVal = new List<ChartValues<OhlcPoint>>();
+        private List<ChartValues<ObservablePoint>> DefChartsVal = new List<ChartValues<ObservablePoint>>();
 
-        public List<SolidColorBrush> ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.DeepPink, Brushes.Orange, Brushes.Aquamarine, Brushes.BlueViolet, Brushes.LightGreen };
+        private List<SolidColorBrush> _ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.DeepPink, Brushes.Orange, Brushes.Aquamarine, Brushes.BlueViolet, Brushes.LightGreen };
 
-        public List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM" };
+        private List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM" };
 
         private bool _isOhlcChartType = true;
 
-        public WebClient BaseCLient = new WebClient();
+        private WebClient BaseCLient = new WebClient();
 
         private SeriesCollection _Series = new SeriesCollection();
 
@@ -84,6 +84,19 @@ namespace WpfApp1.ViewModels
             {
                 _isOhlcChartType = value;
                 OnPropertyChanged(nameof(isOhlcChartType));
+            }
+        }
+
+        public List<SolidColorBrush> ChartColors
+        {
+            get
+            {
+                return _ChartColors;
+            }
+            set
+            {
+                _ChartColors = value;
+                OnPropertyChanged(nameof(ChartColors));
             }
         }
 
