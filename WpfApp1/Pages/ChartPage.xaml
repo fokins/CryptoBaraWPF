@@ -111,51 +111,18 @@
 
             </Border>
             <StackPanel Grid.Column="1">
-                <Border Height="275" Width="90" Margin="5, 10, 10, 10" HorizontalAlignment="Left" Style="{StaticResource RoundedBorder}">
+                <Border Width="90" Margin="5, 10, 10, 10" HorizontalAlignment="Left" Style="{StaticResource RoundedBorder}">
                     <Grid>
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60"/>
                             <ColumnDefinition Width="35"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <StackPanel Grid.Column="0"  Margin="10, 5, 0, 0">
+
+                        <StackPanel x:Name="CheckBoxStackPanel"  Grid.Column="0"  Margin="10, 5, 0, 0">
                             <TextBlock Text="Coins:" FontSize="15" FontFamily="Segoe UI" Margin="0, 0, 0, 5"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="LINK" IsChecked="{Binding Checked[0], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="DOT" IsChecked="{Binding Checked[1], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="ADA" IsChecked="{Binding Checked[2], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="XTZ" IsChecked="{Binding Checked[3], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="TRX" IsChecked="{Binding Checked[4], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="CRO" IsChecked="{Binding Checked[5], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="NEAR" IsChecked="{Binding Checked[6], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
-                            <CheckBox IsThreeState="False" Height="30" Content="ATOM" IsChecked="{Binding Checked[7], Mode=TwoWay}" Command="{Binding UpdateCommand}" FontFamily="Segoe UI Light"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Margin="5, 31, 0, 0">
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[0]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[1]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[2]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[3]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[4]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[5]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[6]}"/>
-                            </Border>
-                            <Border Width="14" Height="13" Background="Transparent" BorderThickness="1" BorderBrush="DimGray" HorizontalAlignment="Left" Margin="0, 17, 0, 0">
-                                <Border Width="11" Height="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{Binding ChartColors[7]}"/>
-                            </Border>
-                        </StackPanel>
+                        <StackPanel x:Name="ChartColorsStackPanel" Grid.Column="1" Margin="5, 14, 0, 0"/>
                     </Grid>
                 </Border>
 

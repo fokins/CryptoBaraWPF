@@ -157,6 +157,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassesCollection\ChartCheckBox.cs" />
+    <Compile Include="ClassesCollection\Coins.cs" />
+    <Compile Include="ClassesCollection\PriceBorder.cs" />
     <Compile Include="ClassesCollection\Root.cs" />
     <Compile Include="ClassesCollection\Ticker.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -250,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Coins\ATOM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\BTC.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

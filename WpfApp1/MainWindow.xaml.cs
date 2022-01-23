@@ -7,6 +7,8 @@ using System.Windows.Threading;
 using System.Windows.Media.Animation;
 using ExchangeSharp;
 using System.Windows.Navigation;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace WpfApp1
 {
@@ -21,15 +23,16 @@ namespace WpfApp1
         public PricePage pricePage = new PricePage();
         public ChartPage chartPage = new ChartPage();
 
+
         public MainWindow()
         {
             InitializeComponent();
 
-            ViewModels.PriceViewModel priceViewModel = new ViewModels.PriceViewModel();
-            ViewModels.ChartViewModel chartViewModel = new ViewModels.ChartViewModel();
+            //ViewModels.PriceViewModel priceViewModel = new ViewModels.PriceViewModel();
+            //ViewModels.ChartViewModel chartViewModel = new ViewModels.ChartViewModel();
 
-            pricePage.DataContext = priceViewModel;
-            chartPage.DataContext = chartViewModel;
+            //pricePage.DataContext = priceViewModel;
+            //chartPage.DataContext = chartViewModel;
 
             MainFrame.Content = pricePage;
         }

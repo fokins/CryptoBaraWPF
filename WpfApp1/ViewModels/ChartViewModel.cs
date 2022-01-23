@@ -23,9 +23,7 @@ namespace WpfApp1.ViewModels
         private List<ChartValues<OhlcPoint>> OhlcChartsVal = new List<ChartValues<OhlcPoint>>();
         private List<ChartValues<ObservablePoint>> DefChartsVal = new List<ChartValues<ObservablePoint>>();
 
-        private List<SolidColorBrush> _ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.DeepPink, Brushes.Orange, Brushes.Aquamarine, Brushes.BlueViolet, Brushes.LightGreen };
-
-        private List<string> CoinNames = new List<string>() { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM" };
+        private Coins coins = new Coins();
 
         private bool _isOhlcChartType = true;
 
@@ -33,7 +31,7 @@ namespace WpfApp1.ViewModels
 
         private SeriesCollection _Series = new SeriesCollection();
 
-        private ObservableCollection<bool> _Checked = new ObservableCollection<bool>() { false, false, false, false, false, false, false, false };
+        private ObservableCollection<bool> _Checked = new ObservableCollection<bool>();
 
         private RelayCommand _UpdateCommand;
         public RelayCommand UpdateCommand
@@ -87,19 +85,6 @@ namespace WpfApp1.ViewModels
             }
         }
 
-        public List<SolidColorBrush> ChartColors
-        {
-            get
-            {
-                return _ChartColors;
-            }
-            set
-            {
-                _ChartColors = value;
-                OnPropertyChanged(nameof(ChartColors));
-            }
-        }
-
         public void UpdateSeries()
         {
             int count = 0;
@@ -125,7 +110,7 @@ namespace WpfApp1.ViewModels
                 {
                     if (Checked[count])
                     {
-                        series.Add(new LineSeries { Values = item, Title = "", Stroke = ChartColors[count], Fill = Brushes.Transparent, PointGeometry = null });
+                        series.Add(new LineSeries { Values = item, Title = "", Stroke = coins.ChartColors[count], Fill = Brushes.Transparent, PointGeometry = null });
                     }
 
                     count++;
@@ -144,8 +129,9 @@ namespace WpfApp1.ViewModels
 
             Root ticker = new Root();
 
-            foreach (var CoinName in CoinNames)
+            foreach (var CoinName in coins.Normalized)
             {
+                Checked.Add(false);
 
                 string JsonString = BaseCLient.DownloadString(BaseURL + CoinName + CurrencyURL);
 

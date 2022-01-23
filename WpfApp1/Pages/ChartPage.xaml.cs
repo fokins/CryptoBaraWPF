@@ -28,9 +28,41 @@ namespace WpfApp1
     public partial class ChartPage : Page
     {
 
+        public Coins coins = new Coins();
+
         public ChartPage()
         {
             InitializeComponent();
+
+            ViewModels.ChartViewModel chartViewModel = new ViewModels.ChartViewModel();
+
+            DataContext = chartViewModel;
+
+            int count = 0;
+
+            foreach (var content in coins.Normalized)
+            {
+                ChartCheckBox chartCheckBox = new ChartCheckBox(content, coins.ChartColors[count]);
+
+                Binding checkBinding = new Binding();
+                checkBinding.Source = chartViewModel;
+                checkBinding.Path = new PropertyPath("Checked[" + count.ToString() + "]");
+
+                chartCheckBox.checkBox.SetBinding(CheckBox.IsCheckedProperty, checkBinding);
+
+                Binding commandBinding = new Binding();
+                commandBinding.Source = chartViewModel;
+                commandBinding.Path = new PropertyPath("UpdateCommand");
+
+                chartCheckBox.checkBox.SetBinding(CheckBox.CommandProperty, commandBinding);
+
+
+                CheckBoxStackPanel.Children.Add(chartCheckBox.checkBox);
+                ChartColorsStackPanel.Children.Add(chartCheckBox.MainBorder);
+
+                count++;
+            }
+
         }
     }
 }

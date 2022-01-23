@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Threading;
 using ExchangeSharp;
 using System.Runtime.CompilerServices;
+using WpfApp1.ClassesCollection;
 
 namespace WpfApp1
 {
@@ -24,9 +25,38 @@ namespace WpfApp1
     public partial class PricePage : Page
     {
 
+        private Coins coins = new Coins();
+
         public PricePage()
         {
             InitializeComponent();
+
+            ViewModels.PriceViewModel priceViewModel = new ViewModels.PriceViewModel();
+
+            DataContext = priceViewModel;
+
+            int count = 0;
+
+            foreach (var coinName in coins.Normalized)
+            {
+                PriceBorder priceBorder = new PriceBorder(coinName);
+
+                Binding BidBinding = new Binding();
+                BidBinding.Source = priceViewModel;
+                BidBinding.Path = new PropertyPath("BidPrices[" + count.ToString() + "]");
+                
+                priceBorder.BidTextBlock.SetBinding(TextBlock.TextProperty, BidBinding);
+
+                Binding AskBinding = new Binding();
+                AskBinding.Source = priceViewModel;
+                AskBinding.Path = new PropertyPath("AskPrices[" + count.ToString() + "]");
+
+                priceBorder.AskTextBlock.SetBinding(TextBlock.TextProperty, AskBinding);
+
+                PricesStackPanel.Children.Add(priceBorder.MainBorder);
+
+                count++;
+            }
         }
     }
 }

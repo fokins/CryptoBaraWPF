@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ExchangeSharp;
-using WpfApp1.Classes;
+using WpfApp1.ClassesCollection;
 
 namespace WpfApp1.ViewModels
 {
@@ -19,12 +19,13 @@ namespace WpfApp1.ViewModels
             return new DateTime(original.Year, original.Month, original.Day, original.Hour, original.Minute, original.Second, original.Millisecond - original.Millisecond % 500);
         }
 
+        private Coins coins = new Coins();
+
         private List<Ticker> BestPrices = new List<Ticker>();
         private List<Ticker> WorstPrices = new List<Ticker>();
 
-        private ObservableCollection<string> _bidPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???", "???", "???", "???" };
-        private ObservableCollection<string> _askPrices = new ObservableCollection<string> { "???", "???", "???", "???", "???", "???", "???", "???" };
-
+        private ObservableCollection<string> _bidPrices = new ObservableCollection<string>();
+        private ObservableCollection<string> _askPrices = new ObservableCollection<string>();
         public ObservableCollection<string> BidPrices
         {
             get
@@ -53,13 +54,22 @@ namespace WpfApp1.ViewModels
 
         public PriceViewModel()
         {
-            List<string> GateIoCoinNames = new List<string>() { "link_usdt", "dot_usdt", "ada_usdt", "xtz_usdt", "trx_usdt", "cro_usdt", "near-usdt", "atom-usdt" };
-            List<string> KrakenCoinNames = new List<string>() { "LINKUSD", "DOTUSD", "ADAUSD", "XTZUSD", "TRXUSD", "CROUSD", "NEARUSD", "ATOMUSD" };
-            List<string> KucoinCoinNames = new List<string>() { "LINK-USDT", "DOT-USDT", "ADA-USDT", "XTZ-USDT", "TRX-USDT", "CRO-USDT", "NEAR-USDT", "ATOM-USDT" };
+            List<string> GateIoCoinNames = new List<string>();
+            List<string> KrakenCoinNames = new List<string>();
+            List<string> KucoinCoinNames = new List<string>();
 
             List<string> ExchangeNames = new List<string>() { ExchangeName.GateIo, ExchangeName.Kraken, ExchangeName.Kucoin };
 
             Dictionary<string, List<string>> CoinNames = new Dictionary<string, List<string>>();
+
+            foreach (string coinName in coins.Normalized)
+            {
+                GateIoCoinNames.Add(coinName.ToLower() + "_usdt");
+                KrakenCoinNames.Add(coinName + "USD");
+                KucoinCoinNames.Add(coinName + "-USDT");
+                BidPrices.Add("???");
+                AskPrices.Add("???");
+            }
 
             CoinNames[ExchangeName.GateIo] = GateIoCoinNames;
             CoinNames[ExchangeName.Kraken] = KrakenCoinNames;
@@ -88,28 +98,33 @@ namespace WpfApp1.ViewModels
 
                         while (true)
                         {
-                            var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curBoxNum]);
 
-                            Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curBoxNum, DateTime.Now);
-
-                            if (TruncateToMilliSecond(BestPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curBoxNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
+                            if (CoinNames[ExchangeName][curBoxNum] != null)
                             {
 
-                                BestPrices[curBoxNum] = CurTicker;
+                                var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curBoxNum]);
 
-                                BidPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Bid, 3).ToString() + "$";
+                                Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curBoxNum, DateTime.Now);
+
+                                if (TruncateToMilliSecond(BestPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curBoxNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
+                                {
+
+                                    BestPrices[curBoxNum] = CurTicker;
+
+                                    BidPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Bid, 3).ToString() + "$";
+                                }
+
+                                if (TruncateToMilliSecond(WorstPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curBoxNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
+                                {
+
+                                    WorstPrices[curBoxNum] = CurTicker;
+
+                                    AskPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Ask, 3).ToString() + "$";
+
+                                }
+
+                                Thread.Sleep(100);
                             }
-
-                            if (TruncateToMilliSecond(WorstPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curBoxNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
-                            {
-
-                                WorstPrices[curBoxNum] = CurTicker;
-
-                                AskPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Ask, 3).ToString() + "$";
-
-                            }
-
-                            Thread.Sleep(100);
                         }
                     });
 

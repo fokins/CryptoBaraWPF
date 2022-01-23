@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ExchangeSharp;
 
-namespace WpfApp1.Classes
+namespace WpfApp1.ClassesCollection
 {
     public class Ticker
     {
