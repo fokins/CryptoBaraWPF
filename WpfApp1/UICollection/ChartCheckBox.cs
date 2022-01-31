@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 
-namespace WpfApp1.ClassesCollection
+namespace WpfApp1.UICollection
 {
     class ChartCheckBox
     {

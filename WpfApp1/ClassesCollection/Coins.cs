@@ -9,8 +9,12 @@ namespace WpfApp1.ClassesCollection
 {
     public class Coins
     {
-        public readonly List<string> Normalized = new List<string> { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM" };
+        public readonly List<string> Normalized = new List<string> { "LINK", "DOT", "ADA", "XTZ", "TRX", "CRO", "NEAR", "ATOM", "AVAX", "XRP", "SOL", "FTM", "XLM" };
 
-        public readonly List<SolidColorBrush> ChartColors = new List<SolidColorBrush>() { Brushes.Purple, Brushes.Red, Brushes.Green, Brushes.DeepPink, Brushes.Orange, Brushes.Aquamarine, Brushes.BlueViolet, Brushes.LightGreen };
+        public readonly List<string> FullNames = new List<string> { "Chainlink", "Polkadot", "Cardano", "Tezos", "Tron", "Cryptocom", "Near", "Cosmos", "Avalanche", "Ripple", "Solana", "Fantom", "Stellar" };
+
+        public readonly List<string> Currency = new List<string> { "RUB", "USDT" };
+
+        public List<SolidColorBrush> ChartColors = new List<SolidColorBrush>() { Brushes.Pink, Brushes.HotPink, Brushes.Red, Brushes.DarkRed, Brushes.Orange, Brushes.YellowGreen, Brushes.LightGreen, Brushes.Green, Brushes.DarkGreen, Brushes.Cyan, Brushes.Blue, Brushes.Violet, Brushes.Purple};
     }
 }

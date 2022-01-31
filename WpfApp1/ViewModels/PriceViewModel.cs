@@ -101,26 +101,32 @@ namespace WpfApp1.ViewModels
 
                             if (CoinNames[ExchangeName][curBoxNum] != null)
                             {
-
-                                var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curBoxNum]);
-
-                                Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curBoxNum, DateTime.Now);
-
-                                if (TruncateToMilliSecond(BestPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curBoxNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
+                                try
                                 {
+                                    var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curBoxNum]);
 
-                                    BestPrices[curBoxNum] = CurTicker;
+                                    Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curBoxNum, DateTime.Now);
 
-                                    BidPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Bid, 3).ToString() + "$";
+                                    if (TruncateToMilliSecond(BestPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curBoxNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
+                                    {
+
+                                        BestPrices[curBoxNum] = CurTicker;
+
+                                        BidPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Bid, 4).ToString() + "$";
+                                    }
+
+                                    if (TruncateToMilliSecond(WorstPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curBoxNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
+                                    {
+
+                                        WorstPrices[curBoxNum] = CurTicker;
+
+                                        AskPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Ask, 4).ToString() + "$";
+
+                                    }
                                 }
-
-                                if (TruncateToMilliSecond(WorstPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curBoxNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
+                                catch
                                 {
-
-                                    WorstPrices[curBoxNum] = CurTicker;
-
-                                    AskPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Ask, 3).ToString() + "$";
-
+                                    Thread.Sleep(1000);
                                 }
 
                                 Thread.Sleep(100);

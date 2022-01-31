@@ -22,6 +22,7 @@ namespace WpfApp1
 
         public PricePage pricePage = new PricePage();
         public ChartPage chartPage = new ChartPage();
+        public BalancePage balancePage= new BalancePage();
 
 
         public MainWindow()
@@ -45,6 +46,11 @@ namespace WpfApp1
         private void ChartButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(chartPage);
+        }
+
+        private void BalanceButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(balancePage);
         }
     }
 }

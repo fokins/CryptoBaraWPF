@@ -16,6 +16,7 @@ using System.Threading;
 using ExchangeSharp;
 using System.Runtime.CompilerServices;
 using WpfApp1.ClassesCollection;
+using WpfApp1.UICollection;
 
 namespace WpfApp1
 {
@@ -39,7 +40,7 @@ namespace WpfApp1
 
             foreach (var coinName in coins.Normalized)
             {
-                PriceBorder priceBorder = new PriceBorder(coinName);
+                PriceBorder priceBorder = new PriceBorder(coinName, coins.FullNames[count]);
 
                 Binding BidBinding = new Binding();
                 BidBinding.Source = priceViewModel;

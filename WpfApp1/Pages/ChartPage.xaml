@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:WpfApp1"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      Height="700" Width="900"
+      MinHeight="600" MinWidth="900"
+      Height="Auto" Width="Auto"
       Title="ChartPage">
 
     <Page.Resources>
@@ -86,56 +87,57 @@
         <!--#endregion-->
     </Page.Resources>
 
-    <Grid Background="#ffdadada">
+    <Grid Background="#eeeeee">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="490"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" MinWidth="500" MaxWidth="850" Margin="10" Style="{StaticResource RoundedBorder}">
 
-            <TextBlock x:Name="StatusBlock" Text="Charts Master" VerticalAlignment="Center" FontSize="25" Padding="5" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Text="Chart viewer" FontSize="30" FontFamily="Segoe UI Semilight" Margin="10, 5, 0, 0"/>
 
-        </Border>
+        <Border Grid.Row="1" Background="White" CornerRadius="20, 20, 0, 0" HorizontalAlignment="Left" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}" Padding="20">
+            <Grid Background="Transparent">
 
-        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="39*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="780"/>
-                <ColumnDefinition Width="120"/>
-            </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" Height="470" Width="735" HorizontalAlignment="Left" Margin="25, 10, 10, 10" Style="{StaticResource RoundedBorder}">
+                <lvc:CartesianChart Grid.Column="0" x:Name="Chart" VerticalAlignment="Stretch" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True" HorizontalAlignment="Stretch"/>
 
-                <lvc:CartesianChart x:Name="Chart" Grid.Column="0" Width="720" Height="440" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True"/>
 
-            </Border>
-            <StackPanel Grid.Column="1">
-                <Border Width="90" Margin="5, 10, 10, 10" HorizontalAlignment="Left" Style="{StaticResource RoundedBorder}">
-                    <Grid>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60"/>
-                            <ColumnDefinition Width="35"/>
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel x:Name="CheckBoxStackPanel"  Grid.Column="0"  Margin="10, 5, 0, 0">
-                            <TextBlock Text="Coins:" FontSize="15" FontFamily="Segoe UI" Margin="0, 0, 0, 5"/>
-                        </StackPanel>
-                        <StackPanel x:Name="ChartColorsStackPanel" Grid.Column="1" Margin="5, 14, 0, 0"/>
-                    </Grid>
-                </Border>
-
-                <Border Height="80" Width="90" Margin="5, 10, 10, 10" HorizontalAlignment="Left" Style="{StaticResource RoundedBorder}">
+                <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <StackPanel>
-                        <TextBlock Text="Style:" FontFamily="Segoe UI" FontSize="15" Margin="10, 10, 0, 0"/>
-                        <RadioButton GroupName="ChartStyle" Content="OHLC" ToolTip="Open High Low Close" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" IsChecked="{Binding isOhlcChartType, Mode=TwoWay}" Command="{Binding UpdateCommand}"/>
-                        <RadioButton GroupName="ChartStyle" Content="DEFAULT" ToolTip="Default Lines" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" Command="{Binding UpdateCommand}"/>
-                    </StackPanel>
-                </Border>
-            </StackPanel>
 
-        </Grid>
+                        <Border BorderBrush="#eeeeee" Background="Transparent">
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="35"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" x:Name="CheckBoxStackPanel" Margin="10, 5, 0, 0">
+                                    <TextBlock Text="Coins:" FontSize="15" FontFamily="Segoe UI" Margin="0, 0, 0, 5"/>
+                                </StackPanel>
+                                <StackPanel x:Name="ChartColorsStackPanel" Grid.Column="1" Margin="5, 14, 0, 0"/>
+                            </Grid>
+                        </Border>
+
+                        <Border BorderBrush="#eeeeee" Background="Transparent" Padding="0, 0, 0, 20">
+                            <StackPanel>
+                                <TextBlock Text="Style:" FontFamily="Segoe UI" FontSize="15" Margin="10, 10, 0, 0"/>
+                                <RadioButton GroupName="ChartStyle" Content="OHLC" ToolTip="Open High Low Close" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" IsChecked="{Binding isOhlcChartType, Mode=TwoWay}" Command="{Binding UpdateCommand}"/>
+                                <RadioButton GroupName="ChartStyle" Content="DEFAULT" ToolTip="Default Lines" Margin="10, 5, 10, 0" FontFamily="Segoe UI Light" Command="{Binding UpdateCommand}"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Viewbox>
+
+            </Grid>
+        </Border>
 
     </Grid>
 </Page>

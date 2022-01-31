@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Binance.Net, Version=7.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Binance.Net.7.2.7\lib\netstandard2.0\Binance.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="CryptoExchange.Net, Version=4.2.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CryptoExchange.Net.4.2.8\lib\netstandard2.0\CryptoExchange.Net.dll</HintPath>
+    </Reference>
     <Reference Include="ExchangeSharp, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DigitalRuby.ExchangeSharp.0.9.0\lib\netstandard2.0\ExchangeSharp.dll</HintPath>
     </Reference>
@@ -53,8 +59,11 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.5.10\lib\net45\NLog.dll</HintPath>
@@ -157,15 +166,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClassesCollection\ChartCheckBox.cs" />
+    <Compile Include="ClassesCollection\BinanceAccountInfoResult.cs" />
+    <Compile Include="Pages\BalancePage.xaml.cs">
+      <DependentUpon>BalancePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UICollection\BalanceBorder.cs" />
+    <Compile Include="UICollection\ChartCheckBox.cs" />
     <Compile Include="ClassesCollection\Coins.cs" />
-    <Compile Include="ClassesCollection\PriceBorder.cs" />
+    <Compile Include="UICollection\PriceBorder.cs" />
     <Compile Include="ClassesCollection\Root.cs" />
     <Compile Include="ClassesCollection\Ticker.cs" />
+    <Compile Include="ViewModels\BalanceViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ChartViewModel.cs" />
     <Compile Include="ViewModels\PriceViewModel.cs" />
     <Compile Include="ClassesCollection\RelayCommand.cs" />
+    <Page Include="Pages\BalancePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ChartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -255,7 +274,29 @@
     <Resource Include="Images\Coins\ATOM.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Coins\BTC.png" />
+    <Resource Include="Images\Coins\AVAX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\free.png" />
+    <Resource Include="Images\Icons\locked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\USDT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\RUB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\XLM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\XRP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\SOL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Coins\FTM.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

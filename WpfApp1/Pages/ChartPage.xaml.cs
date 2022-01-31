@@ -19,6 +19,7 @@ using System.Threading;
 using System.Text.Json;
 using System.Net;
 using WpfApp1.ClassesCollection;
+using WpfApp1.UICollection;
 
 namespace WpfApp1
 {
