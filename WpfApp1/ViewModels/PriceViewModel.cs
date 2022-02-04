@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using ExchangeSharp;
 using WpfApp1.ClassesCollection;
 
@@ -26,6 +27,10 @@ namespace WpfApp1.ViewModels
 
         private ObservableCollection<string> _bidPrices = new ObservableCollection<string>();
         private ObservableCollection<string> _askPrices = new ObservableCollection<string>();
+
+        private ObservableCollection<string> _changePrices = new ObservableCollection<string>();
+        private ObservableCollection<SolidColorBrush> _changePriceColors = new ObservableCollection<SolidColorBrush>();
+
         public ObservableCollection<string> BidPrices
         {
             get
@@ -52,6 +57,32 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public ObservableCollection<string> ChangePrices
+        {
+            get
+            {
+                return _changePrices;
+            }
+            set
+            {
+                _changePrices = value;
+                OnPropertyChanged(nameof(ChangePrices));
+            }
+        }
+
+        public ObservableCollection<SolidColorBrush> ChangePriceColors
+        {
+            get
+            {
+                return _changePriceColors;
+            }
+            set
+            {
+                _changePriceColors = value;
+                OnPropertyChanged(nameof(ChangePriceColors));
+            }
+        }
+
         public PriceViewModel()
         {
             List<string> GateIoCoinNames = new List<string>();
@@ -69,6 +100,9 @@ namespace WpfApp1.ViewModels
                 KucoinCoinNames.Add(coinName + "-USDT");
                 BidPrices.Add("???");
                 AskPrices.Add("???");
+                ChangePrices.Add("???");
+
+                ChangePriceColors.Add(Brushes.Green);
             }
 
             CoinNames[ExchangeName.GateIo] = GateIoCoinNames;
@@ -90,39 +124,61 @@ namespace WpfApp1.ViewModels
                 for (int i = 0; i < CoinNames[ExchangeName].Count; i++)
                 {
 
-                    int curBoxNum = i;
+                    int curCoinNum = i;
 
                     var GetTickerTask = Task.Factory.StartNew(async () =>
                     {
                         var CurExchangeAPI = await ExchangeAPI.GetExchangeAPIAsync(ExchangeName);
 
+                        HistoricalPrice historicalPrice = new HistoricalPrice();
+
                         while (true)
                         {
 
-                            if (CoinNames[ExchangeName][curBoxNum] != null)
+                            if (CoinNames[ExchangeName][curCoinNum] != null)
                             {
                                 try
                                 {
-                                    var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curBoxNum]);
+                                    #region Get ask/bid prices
 
-                                    Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curBoxNum, DateTime.Now);
+                                    var CurExchangeTicker = await CurExchangeAPI.GetTickerAsync(CoinNames[ExchangeName][curCoinNum]);
 
-                                    if (TruncateToMilliSecond(BestPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curBoxNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
+                                    Ticker CurTicker = new Ticker(CurExchangeTicker, ExchangeName, curCoinNum, DateTime.Now);
+
+                                    if (TruncateToMilliSecond(BestPrices[curCoinNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (BestPrices[curCoinNum].TickerValue.Bid < CurTicker.TickerValue.Bid))
                                     {
 
-                                        BestPrices[curBoxNum] = CurTicker;
+                                        BestPrices[curCoinNum] = CurTicker;
 
-                                        BidPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Bid, 4).ToString() + "$";
+                                        BidPrices[curCoinNum] = Math.Round(CurTicker.TickerValue.Bid, 4).ToString() + "$";
                                     }
 
-                                    if (TruncateToMilliSecond(WorstPrices[curBoxNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curBoxNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
+                                    if (TruncateToMilliSecond(WorstPrices[curCoinNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curCoinNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
                                     {
 
-                                        WorstPrices[curBoxNum] = CurTicker;
+                                        WorstPrices[curCoinNum] = CurTicker;
 
-                                        AskPrices[curBoxNum] = Math.Round(CurTicker.TickerValue.Ask, 4).ToString() + "$";
+                                        AskPrices[curCoinNum] = Math.Round(CurTicker.TickerValue.Ask, 4).ToString() + "$";
 
                                     }
+
+                                    #endregion
+                                    #region Get Daily coin price change
+
+                                    Root lastPrice = historicalPrice.GetPrice(1, coins.Normalized[curCoinNum]);
+
+                                    if (lastPrice.Data[1].high > lastPrice.Data[0].high)
+                                    {
+                                        ChangePriceColors[curCoinNum] = Brushes.Green;
+                                        ChangePrices[curCoinNum] = $"{Math.Round(100 - lastPrice.Data[0].high / lastPrice.Data[1].high * 100, 2)}%";
+                                    }
+                                    else
+                                    {
+                                        ChangePriceColors[curCoinNum] = Brushes.Red;
+                                        ChangePrices[curCoinNum] = $"{Math.Round(100 - lastPrice.Data[1].high / lastPrice.Data[0].high * 100, 2)}%";
+                                    }
+
+                                    #endregion
                                 }
                                 catch
                                 {

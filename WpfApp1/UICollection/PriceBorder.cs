@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
+using WpfApp1.ClassesCollection;
 
 namespace WpfApp1.UICollection
 {
@@ -34,7 +35,8 @@ namespace WpfApp1.UICollection
         public TextBlock CoinNameTextBlock = new TextBlock();
         public TextBlock BidTextBlock = new TextBlock();
         public TextBlock AskTextBlock = new TextBlock();
-        public TextBlock FullCoinNameTextxBlock = new TextBlock();
+        public TextBlock FullCoinNameTextBlock = new TextBlock();
+        public TextBlock ChangeTextBlock = new TextBlock();
 
 
         public PriceBorder(string coinName, string fullCoinName)
@@ -65,9 +67,10 @@ namespace WpfApp1.UICollection
             ColumnDefinition ColumnFullCoinName = new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) };
             ColumnDefinition ColumnCoinName = new ColumnDefinition { Width = new GridLength(0.1, GridUnitType.Star) };
             ColumnDefinition ColumnUp = new ColumnDefinition { Width = new GridLength(0.05, GridUnitType.Star) };
-            ColumnDefinition ColumnBid = new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) };
+            ColumnDefinition ColumnBid = new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) };
             ColumnDefinition ColumnDown = new ColumnDefinition { Width = new GridLength(0.05, GridUnitType.Star) };
-            ColumnDefinition ColumnAsk = new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) };
+            ColumnDefinition ColumnAsk = new ColumnDefinition { Width = new GridLength(0.15, GridUnitType.Star) };
+            ColumnDefinition ColumnChange = new ColumnDefinition { Width = new GridLength(0.15, GridUnitType.Star) };
 
             MainGrid.ColumnDefinitions.Add(ColumnLogo);
             MainGrid.ColumnDefinitions.Add(ColumnFullCoinName);
@@ -76,6 +79,7 @@ namespace WpfApp1.UICollection
             MainGrid.ColumnDefinitions.Add(ColumnBid);
             MainGrid.ColumnDefinitions.Add(ColumnDown);
             MainGrid.ColumnDefinitions.Add(ColumnAsk);
+            MainGrid.ColumnDefinitions.Add(ColumnChange);
 
             #endregion
             #region ImageSetup
@@ -96,14 +100,14 @@ namespace WpfApp1.UICollection
 
             #region FullCoinNameTextBlockSetup
 
-            FullCoinNameTextxBlock.VerticalAlignment = VerticalAlignment.Center;
-            FullCoinNameTextxBlock.Padding = new Thickness(10);
-            FullCoinNameTextxBlock.Text = fullCoinName;
-            FullCoinNameTextxBlock.FontSize = FontSize;
-            FullCoinNameTextxBlock.FontFamily = new FontFamily("Segoe UI Semibold");
+            FullCoinNameTextBlock.VerticalAlignment = VerticalAlignment.Center;
+            FullCoinNameTextBlock.Padding = new Thickness(10);
+            FullCoinNameTextBlock.Text = fullCoinName;
+            FullCoinNameTextBlock.FontSize = FontSize;
+            FullCoinNameTextBlock.FontFamily = new FontFamily("Segoe UI Semibold");
 
-            Grid.SetColumn(FullCoinNameTextxBlock, 1);
-            MainGrid.Children.Add(FullCoinNameTextxBlock);
+            Grid.SetColumn(FullCoinNameTextBlock, 1);
+            MainGrid.Children.Add(FullCoinNameTextBlock);
 
             #endregion
             #region CoinNameTextBlockSetup
@@ -173,6 +177,18 @@ namespace WpfApp1.UICollection
 
             Grid.SetColumn(AskTextBlock, 6);
             MainGrid.Children.Add(AskTextBlock);
+
+            #endregion
+            #region ChangeTextBlockSetup
+
+            ChangeTextBlock.VerticalAlignment = VerticalAlignment.Center;
+            ChangeTextBlock.Padding = new Thickness(10);
+            ChangeTextBlock.FontSize = 30;
+            ChangeTextBlock.FontFamily = new FontFamily("Segoe UI SemiLight");
+            ChangeTextBlock.Text = "???";
+
+            Grid.SetColumn(ChangeTextBlock, 7);
+            MainGrid.Children.Add(ChangeTextBlock);
 
             #endregion
         }

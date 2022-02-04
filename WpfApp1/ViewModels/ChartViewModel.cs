@@ -27,8 +27,6 @@ namespace WpfApp1.ViewModels
 
         private Coins coins = new Coins();
 
-        private WebClient BaseCLient = new WebClient();
-
         private bool _isOhlcChartType = true;
 
         private SeriesCollection _Series = new SeriesCollection();
@@ -166,22 +164,15 @@ namespace WpfApp1.ViewModels
 
         public ChartViewModel()
         {
-            const string BaseURL = "https://min-api.cryptocompare.com/data/histoday?aggregate=1&e=CCCAGG&extraParams=CryptoCompare&fsym=";
-            const string CurrencyURL = "&limit=365&tryConversion=false&tsym=USD";
-
             int count = 0;
 
-            Root ticker = new Root();
+            HistoricalPrice historicalPrice= new HistoricalPrice();
 
             foreach (var CoinName in coins.Normalized)
             {
                 Checked.Add(false);
 
-                string JsonString = BaseCLient.DownloadString(BaseURL + CoinName + CurrencyURL);
-
-                ticker = JsonSerializer.Deserialize<Root>(JsonString);
-
-                foreach (var item in ticker.Data)
+                foreach (var item in historicalPrice.GetPrice(365, CoinName).Data)
                 {
                     if (OhlcChartsVal.Count != count)
                     {

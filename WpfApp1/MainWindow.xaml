@@ -7,7 +7,8 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Height="700" Width="960"
-        ResizeMode="CanResize">
+        ResizeMode="CanResize"
+        Title="Cryptobara">
     <Window.Resources>
         <!--#region RoundedButton-->
         <Style x:Key="FocusVisual">

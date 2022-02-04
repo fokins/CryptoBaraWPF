@@ -167,6 +167,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClassesCollection\BinanceAccountInfoResult.cs" />
+    <Compile Include="ClassesCollection\HistoricalPrice.cs" />
     <Compile Include="Pages\BalancePage.xaml.cs">
       <DependentUpon>BalancePage.xaml</DependentUpon>
     </Compile>

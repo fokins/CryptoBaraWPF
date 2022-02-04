@@ -45,7 +45,7 @@ namespace WpfApp1
                 Binding BidBinding = new Binding();
                 BidBinding.Source = priceViewModel;
                 BidBinding.Path = new PropertyPath("BidPrices[" + count.ToString() + "]");
-                
+
                 priceBorder.BidTextBlock.SetBinding(TextBlock.TextProperty, BidBinding);
 
                 Binding AskBinding = new Binding();
@@ -53,6 +53,18 @@ namespace WpfApp1
                 AskBinding.Path = new PropertyPath("AskPrices[" + count.ToString() + "]");
 
                 priceBorder.AskTextBlock.SetBinding(TextBlock.TextProperty, AskBinding);
+
+                Binding ChangeBinding = new Binding();
+                ChangeBinding.Source = priceViewModel;
+                ChangeBinding.Path = new PropertyPath("ChangePrices[" + count.ToString() + "]");
+
+                priceBorder.ChangeTextBlock.SetBinding(TextBlock.TextProperty, ChangeBinding);
+
+                Binding ChangeColorBinding = new Binding();
+                ChangeColorBinding.Source = priceViewModel;
+                ChangeColorBinding.Path = new PropertyPath("ChangePriceColors[" + count.ToString() + "]");
+
+                priceBorder.ChangeTextBlock.SetBinding(TextBlock.ForegroundProperty, ChangeColorBinding);
 
                 PricesStackPanel.Children.Add(priceBorder.MainBorder);
 
