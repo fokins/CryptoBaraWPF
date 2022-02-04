@@ -17,7 +17,7 @@ namespace WpfApp1.UICollection
 
         const int BorderPadding = 5;
 
-        const int IconsWidth = 30;
+        const int IconsWidth = 25;
         const int LogoHeight = 60;
 
         public Border MainBorder = new Border();
@@ -57,12 +57,12 @@ namespace WpfApp1.UICollection
 
             #endregion
             #region MainGridColumnDefenition
-            ColumnDefinition ColumnLogo = new ColumnDefinition { Width = new GridLength(0.1, GridUnitType.Star) };
-            ColumnDefinition ColumnCoinName = new ColumnDefinition { Width = new GridLength(0.15, GridUnitType.Star) };
-            ColumnDefinition ColumnFreeIcon = new ColumnDefinition { Width = new GridLength(0.1, GridUnitType.Star) };
-            ColumnDefinition ColumnFree = new ColumnDefinition { Width = new GridLength(0.3, GridUnitType.Star) };
+            ColumnDefinition ColumnLogo = new ColumnDefinition { Width = new GridLength(0.15, GridUnitType.Star) };
+            ColumnDefinition ColumnCoinName = new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) };
+            ColumnDefinition ColumnFreeIcon = new ColumnDefinition { Width = new GridLength(0.05, GridUnitType.Star) };
+            ColumnDefinition ColumnFree = new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) };
             ColumnDefinition ColumnLockedIcon = new ColumnDefinition { Width = new GridLength(0.05, GridUnitType.Star) };
-            ColumnDefinition ColumnLocked = new ColumnDefinition { Width = new GridLength(0.3, GridUnitType.Star) };
+            ColumnDefinition ColumnLocked = new ColumnDefinition { Width = new GridLength(0.25, GridUnitType.Star) };
 
             MainGrid.ColumnDefinitions.Add(ColumnLogo);
             MainGrid.ColumnDefinitions.Add(ColumnCoinName);
@@ -93,7 +93,7 @@ namespace WpfApp1.UICollection
             CoinNameTextBlock.Padding = new Thickness(10);
             CoinNameTextBlock.Text = coinName;
             CoinNameTextBlock.FontSize = 30;
-            CoinNameTextBlock.FontFamily = new FontFamily("Cascadia Mono SemiLight");
+            CoinNameTextBlock.FontFamily = new FontFamily("Segoe UI Semibold");
 
             Grid.SetColumn(CoinNameTextBlock, 1);
             MainGrid.Children.Add(CoinNameTextBlock);

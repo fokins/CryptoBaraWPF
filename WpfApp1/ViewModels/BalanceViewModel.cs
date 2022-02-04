@@ -12,6 +12,8 @@ using WpfApp1.ClassesCollection;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Threading;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace WpfApp1.ViewModels
 {
@@ -27,6 +29,8 @@ namespace WpfApp1.ViewModels
 
         private ObservableCollection<BinanceAccountInfoResult> _BinanceBalance = new ObservableCollection<BinanceAccountInfoResult>();
         private ObservableCollection<Visibility> _Visibilities = new ObservableCollection<Visibility>();
+
+        private SeriesCollection _Series = new SeriesCollection();
 
         public ObservableCollection<BinanceAccountInfoResult> BinanceBalance
         {
@@ -55,26 +59,66 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public SeriesCollection Series
+        {
+            get
+            {
+                return _Series;
+            }
+            set
+            {
+                _Series = value;
+                OnPropertyChanged(nameof(Series));
+            }
+        }
+
         private async void UpdateBinanceBalanceAsync()
         {
             var result = await client.General.GetAccountInfoAsync();
+
+            SeriesCollection series = new SeriesCollection();
 
             foreach (var coin in result.Data.Balances)
             {
                 if (coin.Total > 0 && coin.Asset != "BTC")
                 {
-                    if (coins.Normalized.IndexOf(coin.Asset) == -1)
+                    double coinPrice = 0;
+
+                    if (coin.Asset == "USDT")
                     {
-                        BinanceBalance[coins.Normalized.Count + coins.Currency.IndexOf(coin.Asset)] = new BinanceAccountInfoResult(coin.Asset, Math.Round(coin.Free, 4) + "$", Math.Round(coin.Locked, 4) + "$", coin.Total);
-                        Visibilities[coins.Normalized.Count + coins.Currency.IndexOf(coin.Asset)] = Visibility.Visible;
+                        coinPrice = 1;
+                    }
+                    else if (coin.Asset == "RUB")
+                    {
+                        var getCoinPrice = await client.Spot.Market.GetBookPriceAsync("USDTRUB");
+
+                        coinPrice = 1 / (double)getCoinPrice.Data.BestAskPrice;
                     }
                     else
                     {
-                        BinanceBalance[coins.Normalized.IndexOf(coin.Asset)] = new BinanceAccountInfoResult(coin.Asset, Math.Round(coin.Free, 4) + "$", Math.Round(coin.Locked, 4) + "$", coin.Total);
+                        var getCoinPrice = await client.Spot.Market.GetBookPriceAsync(coin.Asset + "USDT");
+
+                        coinPrice = (double)getCoinPrice.Data.BestAskPrice;
+                    }
+
+                    if (coins.Normalized.IndexOf(coin.Asset) == -1)
+                    {
+                        BinanceBalance[coins.Normalized.Count + coins.Currency.IndexOf(coin.Asset)] = new BinanceAccountInfoResult(coin.Asset, Math.Round(coin.Free, 4).ToString(), Math.Round(coin.Locked, 4).ToString(), coin.Total);
+                        Visibilities[coins.Normalized.Count + coins.Currency.IndexOf(coin.Asset)] = Visibility.Visible;
+
+                        series.Add(new PieSeries { Title = coin.Asset, Values = new ChartValues<double> { (double)coin.Free * coinPrice }, Fill = coins.ChartColors[coins.Normalized.Count + coins.Currency.IndexOf(coin.Asset)] });
+                    }
+                    else
+                    {
+                        BinanceBalance[coins.Normalized.IndexOf(coin.Asset)] = new BinanceAccountInfoResult(coin.Asset, Math.Round(coin.Free, 4).ToString(), Math.Round(coin.Locked, 4).ToString(), coin.Total);
                         Visibilities[coins.Normalized.IndexOf(coin.Asset)] = Visibility.Visible;
+
+                        series.Add(new PieSeries { Title = coin.Asset, Values = new ChartValues<double> { (double)coin.Free * coinPrice }, Fill = coins.ChartColors[coins.Normalized.IndexOf(coin.Asset)] });
                     }
                 }
             }
+
+            Series = series;
 
         }
 
@@ -92,12 +136,10 @@ namespace WpfApp1.ViewModels
                 Visibilities.Add(Visibility.Collapsed);
             }
 
-            Task.Factory.StartNew(() =>
-            {
-                UpdateBinanceBalanceAsync();
 
-                Thread.Sleep(1000);
-            });
+            UpdateBinanceBalanceAsync();
+
+            Thread.Sleep(5000);
         }
     }
 }

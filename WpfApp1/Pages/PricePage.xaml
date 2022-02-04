@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
       MinHeight="600" MinWidth="900"
+      MaxHeight="2560" MaxWidth="3440"
       Height="Auto" Width="Auto"
       Title="PricePage">
 

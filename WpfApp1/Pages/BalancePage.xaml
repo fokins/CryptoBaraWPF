@@ -3,9 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
       MinHeight="600" MinWidth="900"
+      MaxHeight="2560" MaxWidth="3440"
       Height="Auto" Width="Auto"
       Title="BalancePage">
 
@@ -18,10 +20,22 @@
 
         <TextBlock Grid.Row="0" Text="Binance balance" FontSize="30" FontFamily="Segoe UI Semilight" Margin="10, 5, 0, 0"/>
 
-        <Border Grid.Row="1" Background="White" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" CornerRadius="20" Padding="0, 20, 0, 0">
-            <ScrollViewer VerticalScrollBarVisibility="Visible" Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}">
-                <StackPanel x:Name="BalanceStackPanel"/>
-            </ScrollViewer>
+        <Border  Grid.Row="1" Background="White" CornerRadius="20, 20, 0, 0" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.25*"/>
+                    <ColumnDefinition Width="0.05*"/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <lvc:PieChart Grid.Column="0" LegendLocation="None" Series="{Binding Series}" DisableAnimations="True" HoverPushOut="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="15" FontFamily="Segoe UI Light"/>
+                
+                <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Visible" Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}">
+                    <StackPanel x:Name="BalanceStackPanel"/>
+                </ScrollViewer>
+                
+            </Grid>
         </Border>
     </Grid>
 </Page>

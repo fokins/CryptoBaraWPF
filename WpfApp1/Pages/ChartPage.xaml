@@ -7,6 +7,7 @@
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
       MinHeight="600" MinWidth="900"
+      MaxHeight="2560" MaxWidth="3440"
       Height="Auto" Width="Auto"
       Title="ChartPage">
 
@@ -105,7 +106,15 @@
                 </Grid.ColumnDefinitions>
 
 
-                <lvc:CartesianChart Grid.Column="0" x:Name="Chart" VerticalAlignment="Stretch" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True" HorizontalAlignment="Stretch"/>
+                <lvc:CartesianChart Grid.Column="0" x:Name="Chart" VerticalAlignment="Stretch" Series="{Binding Series}" LegendLocation="None" Margin="10" Hoverable="False" DisableAnimations="True" HorizontalAlignment="Stretch">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis LabelFormatter="{Binding XFormatter}"/>
+                    </lvc:CartesianChart.AxisX>
+
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis LabelFormatter="{Binding YFormatter}"/>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
 
 
                 <Viewbox Grid.Column="1" Stretch="Uniform" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
