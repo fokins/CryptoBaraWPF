@@ -13,7 +13,7 @@ namespace WpfApp1.ClassesCollection
         private const string BaseUrl = "https://min-api.cryptocompare.com/data/histoday?aggregate=1&e=CCCAGG&extraParams=CryptoCompare&fsym=";
         private const string LimitUrl = "&limit=";
         private const string CoinUrl = "&tryConversion=false&tsym=USD";
-        private const string ApiUrl = "&api_key=379b9f987eff9f71ff804ad1142ba1e83c249ec42b38e0ad52e7c9db64926aa1";
+        private const string ApiUrl = "&api_key=8732134a523b6ac1112451d04b1ef0a43df5e60da39ac2354e6c71833d856db8";
 
         private WebClient BaseCLient = new WebClient();
 

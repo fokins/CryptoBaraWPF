@@ -66,6 +66,30 @@ namespace WpfApp1
 
                 priceBorder.ChangeTextBlock.SetBinding(TextBlock.ForegroundProperty, ChangeColorBinding);
 
+                Binding BidExchangeNameBinding = new Binding();
+                BidExchangeNameBinding.Source = priceViewModel;
+                BidExchangeNameBinding.Path = new PropertyPath("BidExchangeNames[" + count.ToString() + "]");
+
+                priceBorder.BidExchangeNameTextBlock.SetBinding(TextBlock.TextProperty, BidExchangeNameBinding);
+
+                Binding BidExchangeLogoBinding = new Binding();
+                BidExchangeLogoBinding.Source = priceViewModel;
+                BidExchangeLogoBinding.Path = new PropertyPath("BidExchangeLogos[" + count.ToString() + "]");
+
+                priceBorder.BidExchangeImage.SetBinding(Image.SourceProperty, BidExchangeLogoBinding);
+
+                Binding AskExchangeNameBinding = new Binding();
+                AskExchangeNameBinding.Source = priceViewModel;
+                AskExchangeNameBinding.Path = new PropertyPath("AskExchangeNames[" + count.ToString() + "]");
+
+                priceBorder.AskExchangeNameTextBlock.SetBinding(TextBlock.TextProperty, AskExchangeNameBinding);
+
+                Binding AskExchangeLogoBinding = new Binding();
+                AskExchangeLogoBinding.Source = priceViewModel;
+                AskExchangeLogoBinding.Path = new PropertyPath("AskExchangeLogos[" + count.ToString() + "]");
+
+                priceBorder.AskExchangeImage.SetBinding(Image.SourceProperty, AskExchangeLogoBinding);
+
                 PricesStackPanel.Children.Add(priceBorder.MainBorder);
 
                 count++;

@@ -166,7 +166,7 @@ namespace WpfApp1.ViewModels
         {
             int count = 0;
 
-            HistoricalPrice historicalPrice= new HistoricalPrice();
+            HistoricalPrice historicalPrice = new HistoricalPrice();
 
             foreach (var CoinName in coins.Normalized)
             {

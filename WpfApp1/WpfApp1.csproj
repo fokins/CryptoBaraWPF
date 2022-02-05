@@ -209,6 +209,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\UIResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\PricePage.xaml.cs">
@@ -301,6 +305,30 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Pages\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exchanges\binance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exchanges\kraken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exchanges\kucoin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exchanges\default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Exchanges\gateio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\arrow_mouseleave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\arrow_mouseover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\arrow_mouseclick.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ExchangeSharp;
 using WpfApp1.ClassesCollection;
 
@@ -27,6 +28,12 @@ namespace WpfApp1.ViewModels
 
         private ObservableCollection<string> _bidPrices = new ObservableCollection<string>();
         private ObservableCollection<string> _askPrices = new ObservableCollection<string>();
+
+        private ObservableCollection<string> _bidExchangeNames = new ObservableCollection<string>();
+        private ObservableCollection<string> _bidExchangeLogos = new ObservableCollection<string>();
+
+        private ObservableCollection<string> _askExchangeNames = new ObservableCollection<string>();
+        private ObservableCollection<string> _askExchangeLogos = new ObservableCollection<string>();
 
         private ObservableCollection<string> _changePrices = new ObservableCollection<string>();
         private ObservableCollection<SolidColorBrush> _changePriceColors = new ObservableCollection<SolidColorBrush>();
@@ -83,13 +90,66 @@ namespace WpfApp1.ViewModels
             }
         }
 
+        public ObservableCollection<string> BidExchangeNames
+        {
+            get
+            {
+                return _bidExchangeNames;
+            }
+            set
+            {
+                _bidExchangeNames = value;
+                OnPropertyChanged(nameof(BidExchangeNames));
+            }
+        }
+
+        public ObservableCollection<string> BidExchangeLogos
+        {
+            get
+            {
+                return _bidExchangeLogos;
+            }
+            set
+            {
+                _bidExchangeLogos = value;
+                OnPropertyChanged(nameof(BidExchangeLogos));
+            }
+        }
+
+        public ObservableCollection<string> AskExchangeNames
+        {
+            get
+            {
+                return _askExchangeNames;
+            }
+            set
+            {
+                _askExchangeNames = value;
+                OnPropertyChanged(nameof(AskExchangeNames));
+            }
+        }
+
+        public ObservableCollection<string> AskExchangeLogos
+        {
+            get
+            {
+                return _askExchangeLogos;
+            }
+            set
+            {
+                _askExchangeLogos = value;
+                OnPropertyChanged(nameof(AskExchangeLogos));
+            }
+        }
+
         public PriceViewModel()
         {
             List<string> GateIoCoinNames = new List<string>();
             List<string> KrakenCoinNames = new List<string>();
             List<string> KucoinCoinNames = new List<string>();
+            List<string> BinanceCoinNames = new List<string>();
 
-            List<string> ExchangeNames = new List<string>() { ExchangeName.GateIo, ExchangeName.Kraken, ExchangeName.Kucoin };
+            List<string> ExchangeNames = new List<string>() { ExchangeName.GateIo, ExchangeName.Kraken, ExchangeName.Kucoin, ExchangeName.Binance };
 
             Dictionary<string, List<string>> CoinNames = new Dictionary<string, List<string>>();
 
@@ -98,16 +158,22 @@ namespace WpfApp1.ViewModels
                 GateIoCoinNames.Add(coinName.ToLower() + "_usdt");
                 KrakenCoinNames.Add(coinName + "USD");
                 KucoinCoinNames.Add(coinName + "-USDT");
+                BinanceCoinNames.Add(coinName + "USDT");
                 BidPrices.Add("???");
                 AskPrices.Add("???");
                 ChangePrices.Add("???");
+                BidExchangeNames.Add("???");
+                AskExchangeNames.Add("???");
 
+                BidExchangeLogos.Add("/Images/Exchanges/default.png");
+                AskExchangeLogos.Add("/Images/Exchanges/default.png");
                 ChangePriceColors.Add(Brushes.Green);
             }
 
             CoinNames[ExchangeName.GateIo] = GateIoCoinNames;
             CoinNames[ExchangeName.Kraken] = KrakenCoinNames;
             CoinNames[ExchangeName.Kucoin] = KucoinCoinNames;
+            CoinNames[ExchangeName.Binance] = BinanceCoinNames;
 
             for (int i = 0; i < GateIoCoinNames.Count; i++)
             {
@@ -151,6 +217,10 @@ namespace WpfApp1.ViewModels
                                         BestPrices[curCoinNum] = CurTicker;
 
                                         BidPrices[curCoinNum] = Math.Round(CurTicker.TickerValue.Bid, 4).ToString() + "$";
+
+                                        BidExchangeNames[curCoinNum] = CurTicker.ExchangeName;
+
+                                        BidExchangeLogos[curCoinNum] = "/Images/Exchanges/" + CurTicker.ExchangeName.ToLower() + ".png";
                                     }
 
                                     if (TruncateToMilliSecond(WorstPrices[curCoinNum].TickerTime) != TruncateToMilliSecond(CurTicker.TickerTime) || (WorstPrices[curCoinNum].TickerValue.Ask > CurTicker.TickerValue.Ask))
@@ -159,6 +229,10 @@ namespace WpfApp1.ViewModels
                                         WorstPrices[curCoinNum] = CurTicker;
 
                                         AskPrices[curCoinNum] = Math.Round(CurTicker.TickerValue.Ask, 4).ToString() + "$";
+
+                                        AskExchangeNames[curCoinNum] = CurTicker.ExchangeName;
+
+                                        AskExchangeLogos[curCoinNum] = "/Images/Exchanges/" + CurTicker.ExchangeName.ToLower() + ".png";
 
                                     }
 
@@ -185,7 +259,7 @@ namespace WpfApp1.ViewModels
                                     Thread.Sleep(1000);
                                 }
 
-                                Thread.Sleep(100);
+                                Thread.Sleep(5000);
                             }
                         }
                     });
